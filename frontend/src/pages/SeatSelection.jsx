@@ -1,10 +1,11 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('${API_BASE_URL}');
 
 const SeatSelection = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const SeatSelection = () => {
   const fetchSeats = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/events/${eventId}`);
+      const response = await fetch(`${API_BASE_URL}/api/events/${eventId}`);
       if (response.ok) {
         const data = await response.json();
         if (data.seats && data.seats.length > 0) {

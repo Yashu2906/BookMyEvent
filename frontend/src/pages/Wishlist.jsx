@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/wishlist`, {
+            const response = await fetch(`${API_BASE_URL}/api/wishlist`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -37,7 +38,7 @@ const Wishlist = () => {
     const removeFromWishlist = async (eventId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/wishlist/remove/${eventId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

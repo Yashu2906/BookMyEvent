@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -23,7 +24,7 @@ const UserProfile = () => {
       const storedUser = JSON.parse(storedUserString);
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5000/api/auth/profile`, {
+        const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
@@ -63,7 +64,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/auth/profile', {
+      const res = await fetch('${API_BASE_URL}/api/auth/profile', {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

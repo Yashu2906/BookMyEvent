@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -50,7 +51,7 @@ const CreateEvent = () => {
         const uploadFormData = new FormData();
         uploadFormData.append('image', imageFile);
 
-        const uploadRes = await fetch('http://localhost:5000/api/upload', {
+        const uploadRes = await fetch('${API_BASE_URL}/api/upload', {
           method: 'POST',
           body: uploadFormData
         });
@@ -60,7 +61,7 @@ const CreateEvent = () => {
         finalImageUrl = uploadData.imageUrl;
       }
 
-      const response = await fetch('http://localhost:5000/api/events', {
+      const response = await fetch('${API_BASE_URL}/api/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

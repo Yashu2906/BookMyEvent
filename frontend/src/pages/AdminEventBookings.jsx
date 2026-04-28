@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AdminSidebar from '../components/AdminSidebar';
@@ -12,7 +13,7 @@ const AdminEventBookings = () => {
     const fetchEventBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5000/api/bookings/event/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/bookings/event/${id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {

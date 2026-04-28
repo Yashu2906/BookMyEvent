@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { GoogleLogin } from '@react-oauth/google';
+import { API_BASE_URL } from '../api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -45,7 +46,7 @@ const Login = () => {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/google-login', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/google-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: credentialResponse.credential }),

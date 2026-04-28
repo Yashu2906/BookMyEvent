@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -48,7 +49,7 @@ const VerifyOTP = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('${API_BASE_URL}/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, phone, role, otp: finalOtp }),
@@ -69,7 +70,7 @@ const VerifyOTP = () => {
   const handleResend = async () => {
     if (timer > 0) return;
     try {
-      const response = await fetch('http://localhost:5000/api/auth/send-otp', {
+      const response = await fetch('${API_BASE_URL}/api/auth/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

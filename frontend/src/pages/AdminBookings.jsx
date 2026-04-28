@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import toast from 'react-hot-toast';
@@ -10,7 +11,7 @@ const AdminBookings = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/bookings', {
+        const response = await fetch('${API_BASE_URL}/api/bookings', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {

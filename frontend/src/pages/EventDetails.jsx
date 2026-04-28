@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -15,14 +16,14 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`${API_BASE_URL}/api/events/${id}`);
         if (response.ok) {
           const data = await response.json();
           setEventData(data);
           
           if (user) {
             const token = localStorage.getItem('token');
-            const wishRes = await fetch(`http://localhost:5000/api/wishlist/check/${id}`, {
+            const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}`, {
               headers: { 'Authorization': `Bearer ${token}` }
             });
             const wishData = await wishRes.json();
@@ -48,8 +49,8 @@ const EventDetails = () => {
       const token = localStorage.getItem('token');
       const method = isWishlisted ? 'DELETE' : 'POST';
       const url = isWishlisted 
-        ? `http://localhost:5000/api/wishlist/remove/${id}`
-        : `http://localhost:5000/api/wishlist/add`;
+        ? `${API_BASE_URL}/api/wishlist/remove/${id}`
+        : `${API_BASE_URL}/api/wishlist/add`;
       
       const response = await fetch(url, {
         method,

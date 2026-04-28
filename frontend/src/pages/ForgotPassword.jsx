@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -12,7 +13,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/forgot-password', {
+      const response = await fetch('${API_BASE_URL}/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

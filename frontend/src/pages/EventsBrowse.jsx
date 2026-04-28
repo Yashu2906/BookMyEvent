@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
@@ -19,8 +20,8 @@ const EventsBrowse = () => {
       try {
         const user = JSON.parse(localStorage.getItem('user'));
         const url = user
-          ? `http://localhost:5000/api/events?userId=${user.id}`
-          : 'http://localhost:5000/api/events';
+          ? `${API_BASE_URL}/api/events?userId=${user.id}`
+          : '${API_BASE_URL}/api/events';
 
         const eventsRes = await fetch(url);
         if (eventsRes.ok) {

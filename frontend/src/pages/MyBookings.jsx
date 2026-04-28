@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { QRCodeSVG } from 'qrcode.react';
@@ -13,7 +14,7 @@ const MyBookings = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('http://localhost:5000/api/bookings/my-bookings', {
+        const response = await fetch('${API_BASE_URL}/api/bookings/my-bookings', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {

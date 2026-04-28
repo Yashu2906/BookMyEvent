@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import { Link } from 'react-router-dom';
@@ -13,8 +14,8 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const [eventsRes, bookingsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/events'),
-          fetch('http://localhost:5000/api/bookings', {
+          fetch('${API_BASE_URL}/api/events'),
+          fetch('${API_BASE_URL}/api/bookings', {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
           })
         ]);

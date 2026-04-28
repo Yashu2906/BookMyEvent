@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../api';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -13,7 +14,7 @@ const ManageEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/events');
+      const response = await fetch('${API_BASE_URL}/api/events');
       if (response.ok) {
         const data = await response.json();
         setEvents(data);
@@ -30,7 +31,7 @@ const ManageEvents = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/events/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/events/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
