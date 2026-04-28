@@ -12,13 +12,31 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
+    origin: (origin, callback) => {
+      callback(null, true); // Allow all for socket.io for now to avoid issues, or use same logic
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"]
   }
 });
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://69f08ed2846e113e941c5be0--book-myevent.netlify.app',
+  'https://book-myevent.netlify.app'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1 || origin.includes('netlify.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
 app.use(express.json());
 
 const multer = require('multer');
@@ -52,7 +70,8 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'No file uploaded' });
   }
-  const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+  const baseUrl = process.env.BASE_URL || `http://localhost:${PORT}`;
+  const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
   res.json({ imageUrl });
 });
 
