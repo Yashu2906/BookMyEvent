@@ -11,7 +11,7 @@ const AdminBookings = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('${API_BASE_URL}/api/bookings', {
+        const response = await fetch(`${API_BASE_URL}/api/bookings`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {

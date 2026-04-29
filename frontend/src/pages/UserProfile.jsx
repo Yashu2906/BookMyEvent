@@ -25,7 +25,7 @@ const UserProfile = () => {
       try {
         const token = localStorage.getItem('token');
         const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
-          headers: { 'Authorization': `Bearer ${token}` }
+          headers: { `Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
 
@@ -64,7 +64,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('${API_BASE_URL}/api/auth/profile', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

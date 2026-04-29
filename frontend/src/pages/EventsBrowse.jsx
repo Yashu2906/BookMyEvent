@@ -21,7 +21,7 @@ const EventsBrowse = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const url = user
           ? `${API_BASE_URL}/api/events?userId=${user.id}`
-          : '${API_BASE_URL}/api/events';
+          : `${API_BASE_URL}/api/events`;
 
         const eventsRes = await fetch(url);
         if (eventsRes.ok) {

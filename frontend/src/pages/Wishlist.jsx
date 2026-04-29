@@ -21,7 +21,7 @@ const Wishlist = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/api/wishlist`, {
-                headers: { 'Authorization': `Bearer ${token}` }
+                headers: { `Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
                 const data = await response.json();
@@ -39,7 +39,7 @@ const Wishlist = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}`, {
-                method: 'DELETE',
+                method: `DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {

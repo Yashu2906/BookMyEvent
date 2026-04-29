@@ -14,8 +14,8 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const [eventsRes, bookingsRes] = await Promise.all([
-          fetch('${API_BASE_URL}/api/events'),
-          fetch('${API_BASE_URL}/api/bookings', {
+          fetch(`${API_BASE_URL}/api/events`),
+          fetch(`${API_BASE_URL}/api/bookings`, {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
           })
         ]);

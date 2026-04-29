@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 
-const socket = io('${API_BASE_URL}');
+const socket = io(`${API_BASE_URL}`);
 
 const SeatSelection = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const SeatSelection = () => {
         if (data.seats && data.seats.length > 0) {
           setSeats(data.seats);
         } else {
-          setPageError('No seats available for this event.');
+          setPageError(`No seats available for this event.');
         }
       } else {
         setPageError('Failed to fetch event seat map.');

@@ -14,7 +14,7 @@ const MyBookings = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('${API_BASE_URL}/api/bookings/my-bookings', {
+        const response = await fetch(`${API_BASE_URL}/api/bookings/my-bookings`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {

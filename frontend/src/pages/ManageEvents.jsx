@@ -14,7 +14,7 @@ const ManageEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/api/events');
+      const response = await fetch(`${API_BASE_URL}/api/events`);
       if (response.ok) {
         const data = await response.json();
         setEvents(data);
@@ -32,7 +32,7 @@ const ManageEvents = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(`${API_BASE_URL}/api/events/${id}`, {
-        method: 'DELETE',
+        method: `DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
         }

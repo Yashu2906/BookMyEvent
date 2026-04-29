@@ -44,7 +44,7 @@ const Payment = () => {
 
     try {
       // Step 1: Create local booking first
-      const bookingResp = await fetch('${API_BASE_URL}/api/bookings', {
+      const bookingResp = await fetch(`${API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const Payment = () => {
       const bookingId = bookingData.booking_id;
 
       // Step 2: Create Razorpay Order
-      const orderResp = await fetch('${API_BASE_URL}/api/payments/order', {
+      const orderResp = await fetch(`${API_BASE_URL}/api/payments/order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const Payment = () => {
         handler: async (response) => {
           // Step 4: Verify Payment
           try {
-            const verifyResp = await fetch('${API_BASE_URL}/api/payments/verify', {
+            const verifyResp = await fetch(`${API_BASE_URL}/api/payments/verify`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

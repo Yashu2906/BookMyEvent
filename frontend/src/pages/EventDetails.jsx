@@ -22,9 +22,9 @@ const EventDetails = () => {
           setEventData(data);
           
           if (user) {
-            const token = localStorage.getItem('token');
+            const token = localStorage.getItem(`token');
             const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}`, {
-              headers: { 'Authorization': `Bearer ${token}` }
+              headers: { `Authorization': `Bearer ${token}` }
             });
             const wishData = await wishRes.json();
             setIsWishlisted(wishData.isInWishlist);
@@ -55,7 +55,7 @@ const EventDetails = () => {
       const response = await fetch(url, {
         method,
         headers: { 
-          'Content-Type': 'application/json',
+          `Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
         body: isWishlisted ? null : JSON.stringify({ eventId: id })
