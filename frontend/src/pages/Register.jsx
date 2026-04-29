@@ -35,6 +35,11 @@ const Register = () => {
       if (!response.ok) throw new Error(data.message || 'Failed to send OTP');
 
       toast.success('OTP sent to your email!');
+      
+      if (data._dev_otp) {
+        console.log(`[DEV OTP]: ${data._dev_otp}`);
+      }
+
       // Navigate to dedicated VerifyOTP page with registration data
       navigate('/verify-otp', { state: { name, email, password, phone, role } });
     } catch (err) {

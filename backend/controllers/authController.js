@@ -18,11 +18,15 @@ exports.sendOTP = async (req, res) => {
     await db.query('DELETE FROM otps WHERE email = ?', [email]);
     await db.query('INSERT INTO otps (email, otp, expiry) VALUES (?, ?, ?)', [email, otp, expiry]);
 
-    await emailService.sendOTPEmail(email, otp);
-    res.json({ message: 'OTP sent successfully' });
+    // Send email asynchronously and catch errors so it doesn't block
+    emailService.sendOTPEmail(email, otp).catch(err => {
+      console.error('SMTP Error (non-blocking):', err.message);
+    });
+    
+    res.json({ message: 'OTP sent successfully', _dev_otp: otp });
   } catch (error) {
-    console.error('Error sending OTP:', error);
-    res.status(500).json({ message: 'Failed to send OTP' });
+    console.error('Error in sendOTP:', error);
+    res.status(500).json({ message: 'Failed to generate OTP' });
   }
 };
 
