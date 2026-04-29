@@ -30,7 +30,7 @@ const EventsBrowse = () => {
           setFilteredEvents(allEvents);
         }
       } catch (error) {
-        console.error('Failed to fetch events:', error);
+        console.error(' Failed to fetch events:', error);
       } finally {
         setLoading(false);
       }
@@ -150,7 +150,7 @@ const EventsBrowse = () => {
                     <img
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       alt={event.title}
-                      src={event.image_url || 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop'}
+                      src={event.image_url || ' https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop'}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
                     <div className="absolute top-4 left-4">

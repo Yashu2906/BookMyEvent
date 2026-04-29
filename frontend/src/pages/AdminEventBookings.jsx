@@ -13,14 +13,14 @@ const AdminEventBookings = () => {
     const fetchEventBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${API_BASE_URL}/api/bookings/event/${id}`, {
-          headers: { `Authorization': `Bearer ${token}` }
+        const response = await fetch(`${API_BASE_URL}/api/bookings/event/${id}` , {
+          headers: { ' Authorization': `Bearer ${token}`  }
         });
         if (response.ok) {
           const result = await response.json();
           setData(result);
         } else {
-          toast.error('Failed to fetch event bookings data');
+          toast.error(' Failed to fetch event bookings data');
         }
       } catch (err) {
         console.error(err);
@@ -51,7 +51,7 @@ const AdminEventBookings = () => {
               </h1>
               <p className="text-zinc-700 text-sm font-black uppercase tracking-[0.2em]">{data.event_title || 'Loading...'}</p>
             </div>
-            
+
             <div className="bg-zinc-900 border border-white/5 rounded-2xl p-6 flex flex-col items-end min-w-[200px] shadow-2xl">
               <span className="text-base font-black uppercase tracking-[0.2em] text-zinc-500 mb-1">Total Revenue</span>
               <span className="text-2xl font-black text-emerald-500">₹{data.revenue}</span>
@@ -100,9 +100,9 @@ const AdminEventBookings = () => {
                         </div>
                       </td>
                       <td className="px-8 py-8">
-                        <div className="text-lg font-black text-emerald-500 mb-1">₹{booking.total_amount}</div>
-                        <div className={`text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block ${booking.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
-                          }`}>
+                        <div className="text-lg font-black text-emerald-500 mb-1'>₹{booking.total_amount}</div>
+                        <div className={`text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block ${booking.status === '  confirmed' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
+                          }'}>
                           {booking.status}
                         </div>
                       </td>
@@ -111,7 +111,7 @@ const AdminEventBookings = () => {
                 </tbody>
               </table>
               {data.bookings.length === 0 && (
-                <div className="p-20 text-center space-y-4">
+                <div className=' p-20 text-center space-y-4">
                   <span className="material-symbols-outlined text-4xl text-zinc-800">receipt_long</span>
                   <p className="text-base font-black uppercase tracking-widest text-zinc-700">No booking records found for this event.</p>
                 </div>

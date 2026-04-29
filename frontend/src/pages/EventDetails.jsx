@@ -16,22 +16,22 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/events/${id}`);
+        const response = await fetch(`${API_BASE_URL}/api/events/${id}` );
         if (response.ok) {
           const data = await response.json();
           setEventData(data);
-          
+
           if (user) {
-            const token = localStorage.getItem(`token');
-            const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}`, {
-              headers: { `Authorization': `Bearer ${token}` }
+            const token = localStorage.getItem(' token');
+            const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}` , {
+              headers: { ' Authorization': `Bearer ${token}`  }
             });
             const wishData = await wishRes.json();
             setIsWishlisted(wishData.isInWishlist);
           }
         }
       } catch (error) {
-        console.error('Error fetching event:', error);
+        console.error(' Error fetching event:', error);
       } finally {
         setLoading(false);
       }
@@ -48,14 +48,14 @@ const EventDetails = () => {
     try {
       const token = localStorage.getItem('token');
       const method = isWishlisted ? 'DELETE' : 'POST';
-      const url = isWishlisted 
+      const url = isWishlisted
         ? `${API_BASE_URL}/api/wishlist/remove/${id}`
-        : `${API_BASE_URL}/api/wishlist/add`;
-      
+        : `${API_BASE_URL}/api/wishlist/add` ;
+
       const response = await fetch(url, {
         method,
-        headers: { 
-          `Content-Type': 'application/json',
+        headers: {
+          ' Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
         body: isWishlisted ? null : JSON.stringify({ eventId: id })
@@ -63,7 +63,7 @@ const EventDetails = () => {
 
       if (response.ok) {
         setIsWishlisted(!isWishlisted);
-        toast.success(isWishlisted ? 'Removed from wishlist' : 'Saved to wishlist');
+        toast.success(isWishlisted ? ' Removed from wishlist' : 'Saved to wishlist');
       }
     } catch (error) {
       toast.error('Wishlist action failed');
@@ -122,13 +122,13 @@ const EventDetails = () => {
           <div className="lg:w-[65%] space-y-12">
             <div className="relative group">
               <div className="aspect-[16/9] w-full rounded-[2.5rem] overflow-hidden bg-zinc-900 border border-white/5 shadow-2xl">
-                <img className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" src={eventData.image_url} alt={eventData.title} />
+                <img className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700' src={eventData.image_url} alt={eventData.title} />
               </div>
-              <button 
+              <button
                 onClick={toggleWishlist}
-                className={`absolute top-6 right-6 p-4 bg-zinc-950/60 backdrop-blur-xl rounded-full border border-white/10 transition-all active:scale-90 ${isWishlisted ? 'text-red-500' : 'text-zinc-500 hover:text-white'}`}
+                className={`absolute top-6 right-6 p-4 bg-zinc-950/60 backdrop-blur-xl rounded-full border border-white/10 transition-all active:scale-90 ${isWishlisted ? ' text-red-500' : 'text-zinc-500 hover:text-white' }`}
               >
-                <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "'FILL' 0" }}>favorite</span>
+                <span className=' material-symbols-outlined text-xl" style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "'FILL' 0" }}>favorite</span>
               </button>
             </div>
 
@@ -164,7 +164,7 @@ const EventDetails = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5">
                 <span className="material-symbols-outlined text-8xl">confirmation_number</span>
               </div>
-              
+
               <div className="relative space-y-8">
                 <div>
                   <p className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-1">Ticket Price</p>
@@ -177,12 +177,12 @@ const EventDetails = () => {
                     <span className="text-zinc-300">Max {eventData.available_seats} Seats</span>
                   </div>
                   <div className="flex items-center justify-between bg-white/[0.03] p-2 rounded-2xl border border-white/5">
-                    <button 
+                    <button
                        onClick={() => setTicketCount(Math.max(1, ticketCount - 1))}
                        className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition-all text-white"
                     >-</button>
                     <span className="text-xl font-black font-headline">{ticketCount}</span>
-                    <button 
+                    <button
                        onClick={() => setTicketCount(Math.min(eventData.available_seats, ticketCount + 1))}
                        className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition-all text-white"
                     >+</button>
@@ -197,16 +197,16 @@ const EventDetails = () => {
                     </span>
                   </div>
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-red-600 rounded-full transition-all duration-1000" style={{ width: `${soldOutPercentage}%` }}></div>
+                    <div className="h-full bg-red-600 rounded-full transition-all duration-1000` style={{ width: `${soldOutPercentage}%`  }}></div>
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={handleBooking}
                   disabled={eventData.available_seats === 0}
-                  className="w-full py-5 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-zinc-200 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group cursor-pointer"
+                  className=' w-full py-5 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-zinc-200 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group cursor-pointer"
                 >
-                  {eventData.available_seats === 0 ? 'Sold Out' : 'Book Now'}
+                  {eventData.available_seats === 0 ? ' Sold Out' : 'Book Now'}
                 </button>
 
                 <p className="text-[9px] text-zinc-600 text-center font-bold uppercase tracking-widest leading-relaxed">

@@ -14,13 +14,13 @@ const ManageEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/events`);
+      const response = await fetch(`${API_BASE_URL}/api/events` );
       if (response.ok) {
         const data = await response.json();
         setEvents(data);
       }
     } catch (err) {
-      console.error('Failed to fetch events:', err);
+      console.error(' Failed to fetch events:', err);
     } finally {
       setLoading(false);
     }
@@ -31,8 +31,8 @@ const ManageEvents = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${API_BASE_URL}/api/events/${id}`, {
-        method: `DELETE',
+      const response = await fetch(`${API_BASE_URL}/api/events/${id}` , {
+        method: ' DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -40,7 +40,7 @@ const ManageEvents = () => {
 
       if (response.ok) {
         setEvents(events.filter(e => e.id !== id));
-        toast.success('Event deleted successfully');
+        toast.success(' Event deleted successfully');
       } else {
         toast.error('Failed to delete event');
       }

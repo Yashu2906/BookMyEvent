@@ -20,15 +20,15 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${API_BASE_URL}/api/wishlist`, {
-                headers: { `Authorization': `Bearer ${token}` }
+            const response = await fetch(`${API_BASE_URL}/api/wishlist` , {
+                headers: { ' Authorization': `Bearer ${token}`  }
             });
             if (response.ok) {
                 const data = await response.json();
                 setWishlist(data);
             }
         } catch (error) {
-            console.error('Error fetching wishlist:', error);
+            console.error(' Error fetching wishlist:', error);
             toast.error('Failed to load wishlist');
         } finally {
             setLoading(false);
@@ -38,13 +38,13 @@ const Wishlist = () => {
     const removeFromWishlist = async (eventId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}`, {
-                method: `DELETE',
-                headers: { 'Authorization': `Bearer ${token}` }
+            const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}` , {
+                method: ' DELETE',
+                headers: { 'Authorization': `Bearer ${token}`  }
             });
             if (response.ok) {
                 setWishlist(wishlist.filter(item => item.id !== eventId));
-                toast.success('Removed from wishlist');
+                toast.success(' Removed from wishlist');
             }
         } catch (error) {
             console.error('Error removing from wishlist:', error);

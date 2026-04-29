@@ -25,14 +25,14 @@ const UserProfile = () => {
       try {
         const token = localStorage.getItem('token');
         const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
-          headers: { `Authorization': `Bearer ${token}` }
+          headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
 
         if (response.ok) {
           setUser(data);
           setFormData({
-            name: data.name || '',
+            name: data.name || ' ',
             email: data.email || '',
             phone: data.phone || ''
           });
@@ -66,9 +66,9 @@ const UserProfile = () => {
       const token = localStorage.getItem('token');
       const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
         method: 'PUT',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` 
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(formData)
       });
@@ -118,7 +118,7 @@ const UserProfile = () => {
             <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-surface-container-high ring-2 ring-primary-container/20 bg-zinc-800 flex items-center justify-center text-4xl font-black text-red-600">
               {user.name?.charAt(0).toUpperCase()}
             </div>
-            <button 
+            <button
               onClick={() => document.getElementById('profile-name').focus()}
               className="absolute bottom-0 right-0 bg-primary-container text-on-primary-container p-2 rounded-full shadow-lg hover:scale-105 transition-transform active:scale-95 cursor-pointer"
             >
@@ -160,10 +160,10 @@ const UserProfile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-zinc-500 uppercase tracking-tighter">Full Name</label>
-                    <input 
+                    <input
                       id="profile-name"
-                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4" 
-                      type="text" 
+                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4"
+                      type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Enter your name"
@@ -172,9 +172,9 @@ const UserProfile = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-zinc-500 uppercase tracking-tighter">Email Address</label>
-                    <input 
-                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4" 
-                      type="email" 
+                    <input
+                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4"
+                      type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@example.com"
@@ -183,9 +183,9 @@ const UserProfile = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-zinc-500 uppercase tracking-tighter">Phone Number</label>
-                    <input 
-                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4" 
-                      type="tel" 
+                    <input
+                      className="w-full bg-zinc-800 border-[1px] border-zinc-700 rounded-xl text-on-surface outline-none focus:border-red-500 transition-all py-3 px-4"
+                      type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 00000 00000"

@@ -10,7 +10,7 @@ const VerifyOTP = () => {
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const regData = location.state || {};
   const { email, name, password, phone, role } = regData;
 
@@ -147,9 +147,9 @@ const VerifyOTP = () => {
               ))}
             </div>
 
-            <button 
-              disabled={loading} 
-              className="group relative w-full py-5 px-8 bg-red-600 hover:bg-red-500 text-white font-headline font-black rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(220,38,38,0.3)] disabled:opacity-50 overflow-hidden" 
+            <button
+              disabled={loading}
+              className="group relative w-full py-5 px-8 bg-red-600 hover:bg-red-500 text-white font-headline font-black rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(220,38,38,0.3)] disabled:opacity-50 overflow-hidden"
               type="submit"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -159,8 +159,8 @@ const VerifyOTP = () => {
 
             <div className="flex flex-col items-center gap-4">
               <div className="h-px w-20 bg-zinc-800"></div>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={handleResend}
                 disabled={timer > 0 || loading}
                 className={`text-xs font-black uppercase tracking-[0.2em] transition-all ${timer > 0 ? 'text-zinc-700 cursor-not-allowed' : 'text-zinc-500 hover:text-white cursor-pointer'}`}
@@ -179,7 +179,7 @@ const VerifyOTP = () => {
         </div>
       </main>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{ __html: '
         @keyframes bounce-subtle {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
@@ -187,7 +187,7 @@ const VerifyOTP = () => {
         .animate-bounce-subtle {
           animation: bounce-subtle 4s ease-in-out infinite;
         }
-      `}} />
+      '}} />
     </div>
   );
 };

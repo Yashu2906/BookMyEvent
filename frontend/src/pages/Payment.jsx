@@ -22,7 +22,7 @@ const Payment = () => {
   const loadRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.src = "https://checkout.razorpay.com/v1/checkout.js';
       script.onload = () => resolve(true);
       script.onerror = () => resolve(false);
       document.body.appendChild(script);
@@ -44,8 +44,8 @@ const Payment = () => {
 
     try {
       // Step 1: Create local booking first
-      const bookingResp = await fetch(`${API_BASE_URL}/api/bookings`, {
-        method: 'POST',
+      const bookingResp = await fetch(`${API_BASE_URL}/api/bookings` , {
+        method: ' POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -58,13 +58,13 @@ const Payment = () => {
       });
 
       const bookingData = await bookingResp.json();
-      if (!bookingResp.ok) throw new Error(bookingData.message || 'Booking initiation failed');
+      if (!bookingResp.ok) throw new Error(bookingData.message || ' Booking initiation failed');
 
       const bookingId = bookingData.booking_id;
 
       // Step 2: Create Razorpay Order
-      const orderResp = await fetch(`${API_BASE_URL}/api/payments/order`, {
-        method: 'POST',
+      const orderResp = await fetch(`${API_BASE_URL}/api/payments/order` , {
+        method: ' POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -73,12 +73,12 @@ const Payment = () => {
       });
 
       const orderData = await orderResp.json();
-      if (!orderResp.ok) throw new Error(orderData.message || 'Razorpay Order failed');
+      if (!orderResp.ok) throw new Error(orderData.message || ' Razorpay Order failed');
 
       // Step 3: Trigger Razorpay Modal
       const res = await loadRazorpay();
       if (!res) {
-        toast.error("Razorpay SDK failed to load. Are you online?");
+        toast.error(' Razorpay SDK failed to load. Are you online?");
         return;
       }
 
@@ -92,8 +92,8 @@ const Payment = () => {
         handler: async (response) => {
           // Step 4: Verify Payment
           try {
-            const verifyResp = await fetch(`${API_BASE_URL}/api/payments/verify`, {
-              method: 'POST',
+            const verifyResp = await fetch(`${API_BASE_URL}/api/payments/verify` , {
+              method: ' POST',
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -107,7 +107,7 @@ const Payment = () => {
             });
 
             if (verifyResp.ok) {
-              toast.success('Payment Verified! Booking Confirmed.');
+              toast.success(' Payment Verified! Booking Confirmed.');
               navigate('/booking-confirmed', {
                 state: {
                   bookingId,
@@ -128,7 +128,7 @@ const Payment = () => {
           name: user.name,
           email: user.email,
         },
-        theme: { color: "#dc2626" },
+        theme: { color: ' #dc2626" },
       };
 
       const rzp = new window.Razorpay(options);

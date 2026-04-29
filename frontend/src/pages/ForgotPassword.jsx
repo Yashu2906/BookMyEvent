@@ -13,8 +13,8 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
-        method: 'POST',
+      const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password` , {
+        method: ' POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
 
       toast.success('Reset token generated! (Check console for simulation)');
       console.log('RESET TOKEN:', data.token); // Simulation
-      
+
       // In a real app, we'd navigate to a page where they enter the token
       navigate('/reset-password', { state: { email } });
     } catch (err) {
@@ -64,10 +64,10 @@ const ForgotPassword = () => {
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <label className="block text-[10px] uppercase font-bold tracking-widest text-zinc-400 mb-2 ml-1">Email Address</label>
-                <input 
+                <input
                   required
-                  className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none text-sm" 
-                  placeholder="name@example.com" 
+                  className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none text-sm"
+                  placeholder="name@example.com"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

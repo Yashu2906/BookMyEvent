@@ -22,7 +22,7 @@ const MyBookings = () => {
           setBookings(data);
         }
       } catch (err) {
-        console.error('Failed to fetch bookings:', err);
+        console.error(' Failed to fetch bookings:', err);
       } finally {
         setLoading(false);
       }
@@ -54,10 +54,10 @@ const MyBookings = () => {
             {bookings.map(booking => (
               <div key={booking.id} className="group relative flex flex-col md:flex-row bg-surface-container-low rounded-2xl overflow-hidden hover:bg-surface-container transition-all duration-300">
                 <div className="w-full md:w-64 h-48 md:h-auto overflow-hidden relative">
-                  <img 
-                    alt={booking.event_title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    src={booking.image_url || 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPw-rpefZB44GzGYaUPBp1KRKIAy1QnESb1Abj4vIuCR7NiOXaxK9HymDFEmon19WcoA4VcX6_6Jrk43qD1e4eUKvZ6PNadhqFrS-M_SFN3q2KIvvVmrYtgG8rE8nvgs13rUyWYkvTlGA-S8I4lIChVbTPMmuhkWChL7TH5rI_9sraYnUZeUd3ioy8_v8Obz-MMkTwN_plN4QNFZ5U0fnBreJaNBI0fT3lmUQsdp0GUPmTZPyenXUS-6qE5bAXoUbR-FzjuNwoMP3u'} 
+                  <img
+                    alt={booking.event_title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={booking.image_url || 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPw-rpefZB44GzGYaUPBp1KRKIAy1QnESb1Abj4vIuCR7NiOXaxK9HymDFEmon19WcoA4VcX6_6Jrk43qD1e4eUKvZ6PNadhqFrS-M_SFN3q2KIvvVmrYtgG8rE8nvgs13rUyWYkvTlGA-S8I4lIChVbTPMmuhkWChL7TH5rI_9sraYnUZeUd3ioy8_v8Obz-MMkTwN_plN4QNFZ5U0fnBreJaNBI0fT3lmUQsdp0GUPmTZPyenXUS-6qE5bAXoUbR-FzjuNwoMP3u'}
                   />
                 </div>
                 <div className="flex-1 p-6 md:p-8 flex flex-col justify-between border-r border-dashed border-outline-variant/30">
@@ -95,7 +95,7 @@ const MyBookings = () => {
                   </div>
                   <div className="flex items-center justify-between mt-8 pt-6 border-t border-outline-variant/10">
                     <div className="flex items-center gap-4">
-                      <button 
+                      <button
                         onClick={() => setSelectedBooking(booking)}
                         className="flex items-center gap-1 text-red-500 hover:text-red-400 text-xs font-bold uppercase tracking-widest group/btn transition-colors cursor-pointer"
                       >
@@ -117,15 +117,15 @@ const MyBookings = () => {
       {/* Booking Details Modal */}
       {selectedBooking && (
         <div className="fixed inset-0 z-[150] flex items-center justify-center px-6">
-          <div 
+          <div
             className="absolute inset-0 bg-black/80 backdrop-blur-md"
             onClick={() => setSelectedBooking(null)}
           ></div>
-          
+
           <div className="relative bg-zinc-900 w-full max-w-lg rounded-[3rem] border border-white/5 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
-            
-            <button 
+
+            <button
               onClick={() => setSelectedBooking(null)}
               className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
             >
@@ -141,13 +141,13 @@ const MyBookings = () => {
               </div>
 
               <div className="bg-white p-6 rounded-[2.5rem] inline-block shadow-2xl">
-                <QRCodeSVG 
+                <QRCodeSVG
                   value={JSON.stringify({
                     id: selectedBooking.id,
                     event: selectedBooking.event_title,
                     seats: selectedBooking.seats,
                     user: selectedBooking.user_id
-                  })} 
+                  })}
                   size={200}
                   level="H"
                 />

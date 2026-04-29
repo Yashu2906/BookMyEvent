@@ -24,8 +24,8 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
-        method: 'POST',
+      const response = await fetch(`${API_BASE_URL}/api/auth/reset-password` , {
+        method: ' POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: formData.email,
@@ -77,9 +77,9 @@ const ResetPassword = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="block text-[10px] uppercase font-bold tracking-widest text-zinc-400 ml-1">Email Address</label>
-                  <input 
+                  <input
                     required
-                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none" 
+                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -87,9 +87,9 @@ const ResetPassword = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="block text-[10px] uppercase font-bold tracking-widest text-zinc-400 ml-1">Verification Code</label>
-                  <input 
+                  <input
                     required
-                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface text-center font-mono tracking-widest placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none" 
+                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface text-center font-mono tracking-widest placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none"
                     placeholder="000000"
                     type="text"
                     value={formData.token}
@@ -98,9 +98,9 @@ const ResetPassword = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="block text-[10px] uppercase font-bold tracking-widest text-zinc-400 ml-1">New Password</label>
-                  <input 
+                  <input
                     required
-                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none" 
+                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none"
                     placeholder="••••••••"
                     type="password"
                     value={formData.newPassword}
@@ -109,9 +109,9 @@ const ResetPassword = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="block text-[10px] uppercase font-bold tracking-widest text-zinc-400 ml-1">Confirm Password</label>
-                  <input 
+                  <input
                     required
-                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none" 
+                    className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-xl py-3.5 px-4 text-on-surface placeholder:text-zinc-500 focus:ring-2 focus:ring-red-600 transition-all outline-none"
                     placeholder="••••••••"
                     type="password"
                     value={formData.confirmPassword}

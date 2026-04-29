@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 
-const socket = io(`${API_BASE_URL}`);
+const socket = io(`${API_BASE_URL}` );
 
 const SeatSelection = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const SeatSelection = () => {
         if (data.seats && data.seats.length > 0) {
           setSeats(data.seats);
         } else {
-          setPageError(`No seats available for this event.');
+          setPageError('No seats available for this event.');
         }
       } else {
         setPageError('Failed to fetch event seat map.');
@@ -77,9 +77,9 @@ const SeatSelection = () => {
     seats.forEach(seat => {
       if (!classMap[seat.seatClass]) {
         classMap[seat.seatClass] = {
-           name: seat.seatClass, 
-           multiplier: parseFloat(seat.priceMultiplier) || 1.0, 
-           available: 0, 
+           name: seat.seatClass,
+           multiplier: parseFloat(seat.priceMultiplier) || 1.0,
+           available: 0,
            total: 0,
            seats: []
         };
@@ -109,7 +109,7 @@ const SeatSelection = () => {
 
   const selectZone = (zone) => {
     if (zone.available < ticketCount) {
-      toast.error(`Not enough seats available in ${zone.name}`);
+      toast.error(`Not enough seats available in ${zone.name}` );
       return;
     }
     const seatsToSelect = zone.seats.slice(0, ticketCount);
@@ -189,22 +189,22 @@ const SeatSelection = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-12">
           <section className="xl:col-span-8 flex flex-col gap-12">
-            
+
             {isZoneBased ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                  {zones.map((zone, idx) => {
                     const isSelected = selectedZoneName === zone.name;
                     const zonePrice = basePrice * zone.multiplier;
                     return (
-                      <div 
+                      <div
                         key={idx}
                         onClick={() => selectZone(zone)}
-                        className={`relative p-8 rounded-[2rem] border transition-all duration-300 cursor-pointer overflow-hidden group
+                        className={'relative p-8 rounded-[2rem] border transition-all duration-300 cursor-pointer overflow-hidden group
                            ${zone.available < ticketCount ? 'opacity-50 grayscale cursor-not-allowed border-white/5 bg-zinc-900/50' :
-                             isSelected ? 'border-red-500 bg-red-950/20 scale-[1.02] shadow-[0_0_30px_rgba(220,38,38,0.2)]' : 
+                             isSelected ? 'border-red-500 bg-red-950/20 scale-[1.02] shadow-[0_0_30px_rgba(220,38,38,0.2)]' :
                              'border-white/10 bg-zinc-900/80 hover:border-red-500/50 hover:bg-zinc-800'
                            }
-                        `}
+                        '}
                       >
                          {isSelected && <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 blur-3xl rounded-full"></div>}
                          <div className="flex justify-between items-start mb-6">
@@ -249,13 +249,13 @@ const SeatSelection = () => {
                               key={seat.id}
                               onClick={() => toggleSeat(seat)}
                               title={seat.seatNumber}
-                              className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 relative group border
+                              className={'w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 relative group border
                                 ${seat.isBooked
-                                  ? 'bg-zinc-900/50 border-white/5 cursor-not-allowed opacity-20'
+                                  ? '  bg-zinc-900/50 border-white/5 cursor-not-allowed opacity-20'
                                   : isSelected
                                     ? 'bg-red-600 border-red-400 scale-110 shadow-2xl shadow-red-600/40 text-white'
-                                    : 'bg-zinc-800/80 border-white/10 hover:border-red-600/50 hover:bg-zinc-700 cursor-pointer text-zinc-500 hover:text-white'
-                                }`}
+                                  : 'bg-zinc-800/80 border-white/10 hover:border-red-600/50 hover:bg-zinc-700 cursor-pointer text-zinc-500 hover:text-white'
+                                }'}
                             >
                               <span className="text-[9px] font-black tracking-tighter">{seat.seatNumber.replace(row, '')}</span>
                               {seat.isBooked && (

@@ -51,8 +51,8 @@ const CreateEvent = () => {
         const uploadFormData = new FormData();
         uploadFormData.append('image', imageFile);
 
-        const uploadRes = await fetch(`${API_BASE_URL}/api/upload`, {
-          method: 'POST',
+        const uploadRes = await fetch(`${API_BASE_URL}/api/upload` , {
+          method: ' POST',
           body: uploadFormData
         });
 
@@ -61,8 +61,8 @@ const CreateEvent = () => {
         finalImageUrl = uploadData.imageUrl;
       }
 
-      const response = await fetch(`${API_BASE_URL}/api/events`, {
-        method: 'POST',
+      const response = await fetch(`${API_BASE_URL}/api/events` , {
+        method: ' POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -75,7 +75,7 @@ const CreateEvent = () => {
       });
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Creation failed');
+      if (!response.ok) throw new Error(data.message || ' Creation failed');
 
       toast.success('Event Published successfully!');
       navigate('/admin/events');
@@ -176,8 +176,8 @@ const CreateEvent = () => {
                             <span className="text-base font-black uppercase">Upload Image</span>
                           </div>
                         )}
-                        <input 
-                          type="file" 
+                        <input
+                          type="file"
                           accept="image/*"
                           onChange={(e) => setImageFile(e.target.files[0])}
                           className="absolute inset-0 opacity-0 cursor-pointer"

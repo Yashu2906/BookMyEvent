@@ -16,8 +16,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-        method: `POST',
+      const response = await fetch(`${API_BASE_URL}/api/auth/login` , {
+        method: ' POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
@@ -31,7 +31,7 @@ const Login = () => {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
-      toast.success(`Welcome back, ${data.user.name}!`);
+      toast.success(`Welcome back, ${data.user.name}!`  );
       if (data.user.role === 'admin') {
         navigate('/admin');
       } else {
@@ -46,8 +46,8 @@ const Login = () => {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/google-login`, {
-        method: `POST',
+      const response = await fetch(`${API_BASE_URL}/api/auth/google-login` , {
+        method: ' POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: credentialResponse.credential }),
       });
@@ -56,7 +56,7 @@ const Login = () => {
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      toast.success(`Welcome back, ${data.user.name}!`);
+      toast.success(`Welcome back, ${data.user.name}!`  );
       navigate('/');
     } catch (err) {
       toast.error(err.message);
