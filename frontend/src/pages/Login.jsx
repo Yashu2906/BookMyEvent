@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/auth/login` , {
-        method: ' POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
@@ -47,7 +47,7 @@ const Login = () => {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/auth/google-login` , {
-        method: ' POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: credentialResponse.credential }),
       });
