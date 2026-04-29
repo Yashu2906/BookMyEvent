@@ -199,12 +199,12 @@ const SeatSelection = () => {
                       <div
                         key={idx}
                         onClick={() => selectZone(zone)}
-                        className={'relative p-8 rounded-[2rem] border transition-all duration-300 cursor-pointer overflow-hidden group
+                        className={`relative p-8 rounded-[2rem] border transition-all duration-300 cursor-pointer overflow-hidden group
                            ${zone.available < ticketCount ? 'opacity-50 grayscale cursor-not-allowed border-white/5 bg-zinc-900/50' :
                              isSelected ? 'border-red-500 bg-red-950/20 scale-[1.02] shadow-[0_0_30px_rgba(220,38,38,0.2)]' :
                              'border-white/10 bg-zinc-900/80 hover:border-red-500/50 hover:bg-zinc-800'
                            }
-                        '}
+                        `}
                       >
                          {isSelected && <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 blur-3xl rounded-full"></div>}
                          <div className="flex justify-between items-start mb-6">
@@ -249,13 +249,13 @@ const SeatSelection = () => {
                               key={seat.id}
                               onClick={() => toggleSeat(seat)}
                               title={seat.seatNumber}
-                              className={'w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 relative group border
+                              className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 relative group border
                                 ${seat.isBooked
-                                  ? '  bg-zinc-900/50 border-white/5 cursor-not-allowed opacity-20'
+                                  ? 'bg-zinc-900/50 border-white/5 cursor-not-allowed opacity-20'
                                   : isSelected
                                     ? 'bg-red-600 border-red-400 scale-110 shadow-2xl shadow-red-600/40 text-white'
                                   : 'bg-zinc-800/80 border-white/10 hover:border-red-600/50 hover:bg-zinc-700 cursor-pointer text-zinc-500 hover:text-white'
-                                }'}
+                                }`}
                             >
                               <span className="text-[9px] font-black tracking-tighter">{seat.seatNumber.replace(row, '')}</span>
                               {seat.isBooked && (

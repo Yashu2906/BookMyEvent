@@ -179,7 +179,7 @@ const VerifyOTP = () => {
         </div>
       </main>
 
-      <style dangerouslySetInnerHTML={{ __html: '
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes bounce-subtle {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
@@ -187,7 +187,7 @@ const VerifyOTP = () => {
         .animate-bounce-subtle {
           animation: bounce-subtle 4s ease-in-out infinite;
         }
-      '}} />
+      `}} />
     </div>
   );
 };

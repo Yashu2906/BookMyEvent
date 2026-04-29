@@ -91,8 +91,7 @@ const AdminBookings = () => {
                       </td>
                       <td className="px-8 py-8">
                         <div className="text-lg font-black text-emerald-500 mb-1">₹{booking.total_amount}</div>
-                        <div className={`text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block ${booking.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
-                          }'}>
+                        <div className={`text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block ${booking.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'}`}>
                           {booking.status}
                         </div>
                       </td>
