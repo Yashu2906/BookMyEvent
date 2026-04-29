@@ -6,11 +6,14 @@ require('dotenv').config();
 const initDB = async () => {
     try {
         console.log('Connecting to MySQL instance to initialize schemas...');
-        const connection = await mysql.createConnection({
+        const connectionConfig = process.env.MYSQL_URL || {
             host: process.env.DB_HOST || 'localhost',
+            port: process.env.DB_PORT || 3306,
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || ''
-        });
+        };
+
+        const connection = await mysql.createConnection(connectionConfig);
 
         const sql = fs.readFileSync(path.join(__dirname, 'schema.sql')).toString();
         // Remove comments and split by actual statement

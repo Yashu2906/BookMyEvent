@@ -22,8 +22,8 @@ const io = new Server(httpServer, {
 // Middleware
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://69f08ed2846e113e941c5be0--book-myevent.netlify.app',
-  'https://book-myevent.netlify.app'
+  'https://book-myevent.netlify.app',
+  'https://bookmyevent-s1zl.onrender.com' // Allow backend to call itself if needed
 ];
 
 app.use(cors({
