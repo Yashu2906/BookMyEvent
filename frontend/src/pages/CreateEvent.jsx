@@ -51,8 +51,8 @@ const CreateEvent = () => {
         const uploadFormData = new FormData();
         uploadFormData.append('image', imageFile);
 
-        const uploadRes = await fetch(`${API_BASE_URL}/api/upload` , {
-          method: ' POST',
+        const uploadRes = await fetch(`${API_BASE_URL}/api/upload`, {
+          method: 'POST',
           body: uploadFormData
         });
 
@@ -61,8 +61,8 @@ const CreateEvent = () => {
         finalImageUrl = uploadData.imageUrl;
       }
 
-      const response = await fetch(`${API_BASE_URL}/api/events` , {
-        method: ' POST',
+      const response = await fetch(`${API_BASE_URL}/api/events`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

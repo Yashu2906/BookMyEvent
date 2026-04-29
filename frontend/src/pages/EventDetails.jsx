@@ -22,9 +22,9 @@ const EventDetails = () => {
           setEventData(data);
 
           if (user) {
-            const token = localStorage.getItem(' token');
-            const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}` , {
-              headers: { ' Authorization': `Bearer ${token}`  }
+            const token = localStorage.getItem('token');
+            const wishRes = await fetch(`${API_BASE_URL}/api/wishlist/check/${id}`, {
+              headers: { 'Authorization': `Bearer ${token}` }
             });
             const wishData = await wishRes.json();
             setIsWishlisted(wishData.isInWishlist);
@@ -55,7 +55,7 @@ const EventDetails = () => {
       const response = await fetch(url, {
         method,
         headers: {
-          ' Content-Type': 'application/json',
+          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
         body: isWishlisted ? null : JSON.stringify({ eventId: id })
@@ -122,13 +122,13 @@ const EventDetails = () => {
           <div className="lg:w-[65%] space-y-12">
             <div className="relative group">
               <div className="aspect-[16/9] w-full rounded-[2.5rem] overflow-hidden bg-zinc-900 border border-white/5 shadow-2xl">
-                <img className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700' src={eventData.image_url} alt={eventData.title} />
+                <img className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" src={eventData.image_url} alt={eventData.title} />
               </div>
               <button
                 onClick={toggleWishlist}
-                className={`absolute top-6 right-6 p-4 bg-zinc-950/60 backdrop-blur-xl rounded-full border border-white/10 transition-all active:scale-90 ${isWishlisted ? ' text-red-500' : 'text-zinc-500 hover:text-white' }`}
+                className={`absolute top-6 right-6 p-4 bg-zinc-950/60 backdrop-blur-xl rounded-full border border-white/10 transition-all active:scale-90 ${isWishlisted ? 'text-red-500' : 'text-zinc-500 hover:text-white'}`}
               >
-                <span className=' material-symbols-outlined text-xl" style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "'FILL' 0" }}>favorite</span>
+                <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "'FILL' 0" }}>favorite</span>
               </button>
             </div>
 
@@ -197,16 +197,16 @@ const EventDetails = () => {
                     </span>
                   </div>
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-red-600 rounded-full transition-all duration-1000` style={{ width: `${soldOutPercentage}%`  }}></div>
+                    <div className="h-full bg-red-600 rounded-full transition-all duration-1000" style={{ width: `${soldOutPercentage}%` }}></div>
                   </div>
                 </div>
 
                 <button
                   onClick={handleBooking}
                   disabled={eventData.available_seats === 0}
-                  className=' w-full py-5 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-zinc-200 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group cursor-pointer"
+                  className="w-full py-5 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-zinc-200 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group cursor-pointer"
                 >
-                  {eventData.available_seats === 0 ? ' Sold Out' : 'Book Now'}
+                  {eventData.available_seats === 0 ? 'Sold Out' : 'Book Now'}
                 </button>
 
                 <p className="text-[9px] text-zinc-600 text-center font-bold uppercase tracking-widest leading-relaxed">

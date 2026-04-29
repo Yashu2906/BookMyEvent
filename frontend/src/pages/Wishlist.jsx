@@ -20,8 +20,8 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${API_BASE_URL}/api/wishlist` , {
-                headers: { ' Authorization': `Bearer ${token}`  }
+            const response = await fetch(`${API_BASE_URL}/api/wishlist`, {
+                headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
                 const data = await response.json();
@@ -38,13 +38,13 @@ const Wishlist = () => {
     const removeFromWishlist = async (eventId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}` , {
-                method: ' DELETE',
-                headers: { 'Authorization': `Bearer ${token}`  }
+            const response = await fetch(`${API_BASE_URL}/api/wishlist/remove/${eventId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
                 setWishlist(wishlist.filter(item => item.id !== eventId));
-                toast.success(' Removed from wishlist');
+                toast.success('Removed from wishlist');
             }
         } catch (error) {
             console.error('Error removing from wishlist:', error);
@@ -72,7 +72,7 @@ const Wishlist = () => {
                     {/* Header Section */}
                     <header className="mb-10 md:mb-16">
                         <p className="text-red-500 font-black tracking-[0.3em] text-[10px] md:text-sm mb-2 font-headline uppercase leading-none opacity-50">SAVED EXPERIENCES</p>
-                        <h1 className="text-3xl md:text-3xl font-black text-white font-headline leading-none uppercase">My  <span className="text-red-600">Wishlist</span></h1>
+                        <h1 className="text-3xl md:text-3xl font-black text-white font-headline leading-none uppercase">My <span className="text-red-600">Wishlist</span></h1>
                     </header>
 
                     {loading ? (
